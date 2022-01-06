@@ -1,0 +1,46 @@
+<div class="post">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="/assets/avatars/{{ post.usuario.avatar }}" />
+    </ion-avatar>
+    <ion-label>
+      <h3>{{ post.usuario.nombre }}</h3>
+      <h5>{{ post.usuario.username }}</h5>
+    </ion-label>
+  </ion-item>
+
+  <!-- ngIf imgs... -->
+  <!-- <ion-slides mode="ios" pager="ios" scrollbar="ios" *ngIf="imgs.length > 1"> -->
+  <ion-slides mode="ios" pager="ios" scrollbar="ios">
+    <ion-slide *ngFor="let img of post.imgs" class="image-slide"
+      style="background-image: url('{{ img | imagen: post.usuario._id }}');">
+    </ion-slide>
+    <!-- <ion-slide class="image-slide" style="background-image: url('/assets/{{ imgs[0] }}');">
+    </ion-slide>
+    <ion-slide class="image-slide" style="background-image: url('/assets/{{ imgs[1] }}');">
+    </ion-slide>
+    <ion-slide class="image-slide" style="background-image: url('/assets/{{ imgs[2] }}');">
+    </ion-slide> -->
+  </ion-slides>
+
+  <!-- <ion-slides mode="ios" *ngIf="imgs.length === 1" [options="slideSoloOpts" ]> -->
+  <ion-slides mode="ios" *ngIf="post.imgs.length === 1" [options="slideSoloOpts" ]>
+    <ion-slide *ngFor="let img of post.imgs" class="image-slide"
+      style="background-image: url('{{ img | imagen: post.usuario._id }}');">
+      <!-- <ion-slide class="image-slide" style="background-image: url('/assets/{{ imgs[0] }}');">-->
+    </ion-slide>
+  </ion-slides>
+  <!-- mapa -->
+
+  <app-mapa [coords]="post.coords" *ngIf="post.coords"></app-mapa>
+
+  <ion-item lines="none">
+    <ion-icon slot="start" name="heart-outline"></ion-icon>
+    <ion-icon slot="end" name="bookmark"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label text-wrap>{{ post.mensaje }}</ion-label>
+  </ion-item>
+
+</div>

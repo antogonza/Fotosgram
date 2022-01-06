@@ -1,0 +1,6 @@
+{
+	"appId": "es.antogonza.fotosgram",
+	"appName": "FotosGram",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
